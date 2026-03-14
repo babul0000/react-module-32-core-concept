@@ -3,27 +3,96 @@ import './App.css'
 import Counter from './Counter'
 import Batsman from './Batsman'
 import Bowler from './Bowler'
+import Users from './Users'
+import { Suspense } from 'react'
+import Friends from './Friends'
+import Posts from './Post'
+import Buying from './Practice'
+
+
+
+// const fatchUsers = fetch("https://jsonplaceholder.typicode.com/users")
+// .then(res => res.json())
+
+// const fetchFriends = async() => {
+// const res = await fetch("https://jsonplaceholder.typicode.com/users")
+// return res.json();
+
+// }
+
+// const postApi = async() => {
+//   const res = await fetch("https://jsonplaceholder.typicode.com/posts")
+//   return res.json();
+// }
+
+
+
+// const postData = postApi();
+
+// const boysFetch = async() => {
+// const res = await fetch("https://jsonplaceholder.typicode.com/users")
+// return res.json();
+// }
+// const boysPromise = boysFetch();
+
+const userApi = async() => {
+  const res = await fetch("https://jsonplaceholder.typicode.com/users")
+  return res.json()
+}
+
 
 function App() {
-  function handleClick() {
-    alert('i am a click')
-  }
+  
+  const apiFinal = userApi();
 
-  const handleClick2 = () => {
-    alert("i am a click 2")
-  }
-
-  const handleNumber = (num) => {
-const numDouble = num + 100;
-alert(numDouble)
-  }
+  // const boysPromise = boysFetch();
+// const friendsPromiss = fetchFriends();
 
   return (
     <>
       <h1>hello bangladesh</h1>
+
+<Suspense fallback={<h2>hello...</h2>}>
+  <Buying apiFinal={apiFinal}></Buying>
+</Suspense>
+
+
+
+
+
+{/* 
+<Suspense fallback={<h2>hello...</h2>}>
+  <Friends boysPromise={boysPromise}></Friends>
+</Suspense> */}
+
+
+        
+{/* <Suspense fallback={<h2>hello....</h2>}>
+  <Posts postData={postData}></Posts>
+</Suspense> */}
+
+
+
+      {/* <Suspense fallback={<h4>hello...</h4>}>
+        <Friends friendsPromiss={friendsPromiss}></Friends>
+      </Suspense> */}
+
+
+      {/* <Suspense fallback={<h3>loading...</h3>}>
+        <Users fetchUsers = {fatchUsers}></Users>
+      </Suspense>
+
+      <Suspense fallback={<h4>hello...</h4>}>
+        <Friends friendsPromiss={friendsPromiss}></Friends>
+      </Suspense> */}
+
+      {/* <Users></Users> */}
+
+
+
       {/* <Batsman></Batsman> */}
       
-      <Bowler></Bowler>
+      {/* <Bowler></Bowler> */}
 
 
       
